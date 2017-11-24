@@ -1,0 +1,229 @@
+<!-- The StoryMap container can go anywhere on the page. Be sure to
+    specify a width and height.  The width can be absolute (in pixels) or
+    relative (in percentage), but the height must be an absolute value.
+    Of course, you can specify width and height with CSS instead -->
+    <div id="mapdiv" style="width: 100%; height: 600px;"></div>
+    
+    <!-- Your script tags should be placed before the closing body tag. -->
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/storymapjs/latest/css/storymap.css">
+    <script type="text/javascript" src="https://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>
+    
+    <script>
+    jsonData = {
+    width: 100,                    // required for embed tool; width of StoryMap
+    height: 100,                   // required for embed tool; height of StoryMap
+    font_css: "stock:amatic-andika",                  // optional; font set for UI controls/messages
+    calculate_zoom: true,              // optional; defaults to true *unless* map_as_image is true.
+    storymap: {
+        language: "en",              // required; two-letter ISO language code
+        map_type: "osm:standard",          // required
+        map_as_image: false,       // required
+//        map_subdomains: string,    // optional
+        slides: [{
+            type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.882053,      // latitude of point on map
+                lon: 151.197726       // longitude of point on map
+            },
+            text: {                // optional if media present
+                headline: "Reusable Coffee Cup Lifecycle",
+                text: ""       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./cups.jpg",       // url for featured media
+                caption: "",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: 1.297952,        // latitude of point on map
+                lon: 103.858814        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Polyolefin Creation",
+                text: "Plastic is created in Singapore from raw ingredients. This process involves polymerization of crude oil and other components. 1 tonne of polypropylene creates 2 tonnes of CO2e."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./polyolefin.jpg",       // url for featured media
+                caption: "Polyolefin",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: 1.297952,        // latitude of point on map
+                lon: 103.858814        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Polyolefin Creation",
+                text: "The average factory worker in Singapore is paid $974.97 AUD a month. Singapore's Employment Act protect workers from being forced to work long hours."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./singapore.jpg",       // url for featured media
+                caption: "Norman tests the created plastics for quality and he is paid the equivilent of $2670 AUD ",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -37.662063,         // latitude of point on map
+                lon: 144.960395         // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Transport to Melbourne",
+                text: "Shipping from Singapore to Melbourne, this takes around 1 tonne of CO2"       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./ship.jpg",       // url for featured media
+                caption: "Ship",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -37.662063,         // latitude of point on map
+                lon: 144.960395        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Product Manufacture",
+                text: "Polypropylene Plastic is moulding into shape using heat and then packaged. This involves heat and uses 1 tonne of CO2."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./factory.jpg",       // url for featured media
+                caption: "Injection moulding machines",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -37.662063,         // latitude of point on map
+                lon: 144.960395        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Product Manufacture",
+                text: "Australian workers are paid well and protected by many Employment Acts."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./manufacturer.jpg",       // url for featured media
+                caption: "Shirley is responsible for overseeing the moulding machines and is paid $20 an hour. ",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.967348,       // latitude of point on map
+                lon: 151.211084        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Transport to Sydney",
+                text: "Transport from Melbourne to Sydney"       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./truck.jpg",       // url for featured media
+                caption: "Working hard",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.884906,      // latitude of point on map
+                lon: 151.200779        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Sale",
+                text: "During sale the product is put on display."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./sale.jpg",       // url for featured media
+                caption: "Shop where the product is sold",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.882071,       // latitude of point on map
+                lon: 151.197758        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Use",
+                text: "Cups are used instead of disposable cups, diverting millions of cups from landfill each year."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./use.jpg",       // url for featured media
+                caption: "Working hard",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.817572,        // latitude of point on map
+                lon: 151.049271        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Transport",
+                text: "Household recycling is transported to recycling centres"       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./recyclingtruck.jpg",       // url for featured media
+                caption: "Working hard",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.817572,        // latitude of point on map
+                lon: 151.049271        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Recyling",
+                text: "The plastic is broken down and turned into pellets that can be used to create new plastic products."       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./recycling.jpg",       // url for featured media
+                caption: "Working hard",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        },
+        {
+            //type: "overview",      // optional; if present must be set to "overview"
+            location: {            // required for all slides except "overview" slide
+                lat: -33.817572,        // latitude of point on map
+                lon: 151.049271        // longitude of point on map
+            }, 
+            text: {                // optional if media present
+                headline: "Recyling",
+                text: ""       // may contain HTML markup
+            },
+            media: {               // optional if text present
+                url: "./recycler.jpg",       // url for featured media
+                caption: "Working hard",   // optional; brief explanation of media content
+                //credit: string     // optional; creator of media content
+            }
+        }
+        ]              
+    }
+}
+    
+    // storymap_data can be an URL or a Javascript object
+    
+    // certain settings must be passed within a separate options object
+    var storymap_options = {};
+    
+    var storymap = new VCO.StoryMap('mapdiv', jsonData, storymap_options);
+    window.onresize = function(event) {
+        storymap.updateDisplay(); // this isn't automatic
+    }
+
+    
+    </script>
